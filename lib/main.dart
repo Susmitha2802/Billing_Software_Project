@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Userdashboard.dart';
+import 'Admindashboard.dart';
 
 void main() => runApp(const MyApp());
 
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
     print("height");
     return Scaffold(
       appBar: AppBar(
-        title: const Text("LoginPage"),
+        title: const Text("Login Page"),
       ),
       body: Container(
         alignment: Alignment.center,
@@ -130,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: deviceHeight / 16.425,
                       width: deviceWidth / 6.83,
                       child: ElevatedButton(
@@ -140,20 +141,26 @@ class _LoginPageState extends State<LoginPage> {
                             _isVisible = !_isVisible;
                           });
 
-                          if (usernameController != null &&
-                              usernameController.text == "Susmitha" &&
-                              passwordController != null &&
+                          if (usernameController.text == "Susmitha" &&
                               passwordController.text == "Susmi@2001") {
-                            _isVisible = false;
-                          } else {
-                            _isVisible = true;
-                          }
-                          {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const UserDashboard()));
+                                        const Userdashboard()));
+
+                            _isVisible = false;
+                          } else if (usernameController.text == "Admin" &&
+                              passwordController.text == "1234") {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const Admindashboard()));
+
+                            _isVisible = false;
+                          } else {
+                            _isVisible = true;
                           }
                         },
                       ),
